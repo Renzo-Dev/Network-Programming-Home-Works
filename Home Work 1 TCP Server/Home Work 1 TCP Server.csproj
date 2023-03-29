@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{966CEFE1-7C62-487B-BBF5-E67DC11C64D7}</ProjectGuid>
+    <ProjectGuid>{66914979-835B-4496-AFD0-EED8FCBF9229}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Home_Work_1_Server</RootNamespace>
-    <AssemblyName>Home Work 1 Server</AssemblyName>
+    <RootNamespace>Home_Work_1_TCP_Server</RootNamespace>
+    <AssemblyName>Home Work 1 TCP Server</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -35,6 +35,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />

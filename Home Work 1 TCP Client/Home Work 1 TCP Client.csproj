@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{4EE07F62-B6F2-46BC-965B-6AA0BE0FBF08}</ProjectGuid>
+    <ProjectGuid>{F7A7053D-FDBB-429A-9756-7FF9DA98072B}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Home_Work_1_Client</RootNamespace>
-    <AssemblyName>Home Work 1 Client</AssemblyName>
+    <RootNamespace>Home_Work_1_TCP_Client</RootNamespace>
+    <AssemblyName>Home Work 1 TCP Client</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

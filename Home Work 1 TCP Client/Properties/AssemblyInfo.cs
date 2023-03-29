@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // Общие сведения об этой сборке предоставляются следующим набором
 // набора атрибутов. Измените значения этих атрибутов для изменения сведений,
 // связанные с этой сборкой.
-[assembly: AssemblyTitle("Home Work 1 Client")]
+[assembly: AssemblyTitle("Home Work 1 TCP Client")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Home Work 1 Client")]
+[assembly: AssemblyProduct("Home Work 1 TCP Client")]
 [assembly: AssemblyCopyright("Copyright ©  2023")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // Следующий GUID представляет идентификатор typelib, если этот проект доступен из модели COM
-[assembly: Guid("4ee07f62-b6f2-46bc-965b-6aa0be0fbf08")]
+[assembly: Guid("f7a7053d-fdbb-429a-9756-7ff9da98072b")]
 
 // Сведения о версии сборки состоят из указанных ниже четырех значений:
 //
