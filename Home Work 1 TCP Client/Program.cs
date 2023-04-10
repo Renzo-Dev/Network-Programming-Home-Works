@@ -6,13 +6,12 @@ using System.Threading;
 
 namespace Home_Work_1_TCP_Client
 {
-    class Client
+    internal class Client
     {
         private IPEndPoint _ipEndPoint = null;
 
         public Client()
         {
-      
             _ipEndPoint = new IPEndPoint(IPAddress.Parse("5.227.27.199"), 7777);
         }
 
@@ -73,7 +72,7 @@ namespace Home_Work_1_TCP_Client
 
     internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             Client client = new Client();
             client.Connect();

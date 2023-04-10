@@ -13,8 +13,8 @@ namespace Home_Work_2_3_TCP_Server
     public partial class Form1 : Form
     {
         private List<string> _phrases;
-        private IPEndPoint localEndPoint;
-        private Socket socket;
+        private IPEndPoint _localEndPoint;
+        private Socket _socket;
 
         public Form1()
         {
@@ -29,20 +29,20 @@ namespace Home_Work_2_3_TCP_Server
 
         private void button1_Click(object sender, EventArgs e)
         {
-            localEndPoint = new IPEndPoint(IPAddress.Parse("192.168.1.172"), int.Parse(tbPort.Text));
+            _localEndPoint = new IPEndPoint(IPAddress.Parse("192.168.1.172"), int.Parse(tbPort.Text));
             // создаем локальный сокет для подключения на него
-            socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+            _socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             try
             {
                 // устанавливаем прослушивание
-                socket.Bind(localEndPoint);
-                socket.Listen(10);
+                _socket.Bind(_localEndPoint);
+                _socket.Listen(10);
 
-                socket.BeginAccept(AcceptCallback, null);
+                _socket.BeginAccept(AcceptCallback, null);
             }
             catch (Exception ex)
             {
-                MessageBox.Show($@"Error:{ex.Message}");
+                // MessageBox.Show($@"Error: {ex.Message}");
             }
 
             pictureBox1.BackColor = Color.Green;
@@ -50,17 +50,17 @@ namespace Home_Work_2_3_TCP_Server
 
         private async void AcceptCallback(IAsyncResult ar)
         {
-            if (socket == null)
+            if (_socket == null)
             {
                 return;
             }
 
             // принимаем входящие подключения, и создаем новый Socket с ним
-            Socket client = socket.EndAccept(ar);
+            Socket client = _socket.EndAccept(ar);
 
             await Task.Run(() => { StartMessaging(client); });
 
-            socket.BeginAccept(AcceptCallback, null);
+            _socket.BeginAccept(AcceptCallback, null);
         }
 
         private void StartMessaging(Socket client)
@@ -102,7 +102,7 @@ namespace Home_Work_2_3_TCP_Server
             }
             catch (Exception ex)
             {
-                MessageBox.Show($@"Error:{ex.Message}");
+                //MessageBox.Show($@"Error: {ex.Message}");
             }
         }
     }

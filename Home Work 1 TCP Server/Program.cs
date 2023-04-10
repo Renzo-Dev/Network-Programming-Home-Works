@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Home_Work_1_TCP_Server
 {
-    class Server
+    internal class Server
     {
         // Устанавливаем для Socket локальную конечную точку
         private IPEndPoint _localEndPoint = null;
@@ -105,7 +105,7 @@ namespace Home_Work_1_TCP_Server
 
     internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             Server server = new Server();
             server.Run();

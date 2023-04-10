@@ -10,6 +10,7 @@ namespace Home_Work_2_1_TCP_Client
     {
         private IPEndPoint remotEndPoint;
         private Socket clientSocket;
+
         public Form1()
         {
             InitializeComponent();

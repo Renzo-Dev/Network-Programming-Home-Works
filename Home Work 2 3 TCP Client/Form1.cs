@@ -33,12 +33,12 @@ namespace Home_Work_2_3_TCP_Client
                     while (client.IsConnect)
                     {
                         string mes = await client.ReaderNetworkStream();
-                        if (lbChat.InvokeRequired)
+                        if (mes != String.Empty)
                         {
-                            lbChat.Invoke(new Action(() =>
+                            if (lbChat.InvokeRequired)
                             {
-                                lbChat.Items.Add(mes);
-                            }));
+                                lbChat.Invoke(new Action(() => { lbChat.Items.Add($@"Server >> {mes}"); }));
+                            }
                         }
                     }
 
@@ -51,18 +51,23 @@ namespace Home_Work_2_3_TCP_Client
             }
 
         }
+
         private void bSendMessage_Click(object sender, EventArgs e)
         {
-            lbChat.Items.Add($@"Me >> {tbMessage.Text}");
-            client.SendMessage(tbMessage.Text);
-            if (tbMessage.Text == "Bye")
+            if (tbMessage.Text == @"Bye")
             {
                 client.IsConnect = false;
-                client.Disconnect();
                 gbMessage.Enabled = false;
                 bConnect.Enabled = true;
                 tbMessage.Text = String.Empty;
+                pictureBox1.BackColor = Color.Red;
                 lbChat.Items.Clear();
+                client.Disconnect();
+            }
+            else
+            {
+                lbChat.Items.Add($@"Me >> {tbMessage.Text}");
+                client.SendMessage(tbMessage.Text);
             }
         }
     }
@@ -70,6 +75,7 @@ namespace Home_Work_2_3_TCP_Client
     class Client
     {
         public bool IsConnect = false;
+
         // конечная точка хоста
         private IPEndPoint remoteEndPoint;
 
@@ -96,31 +102,42 @@ namespace Home_Work_2_3_TCP_Client
             }
         }
 
+        // получить пакет от сервера
         public Task<string> ReaderNetworkStream()
         {
-            NetworkStream stream = new NetworkStream(_socket);
-            int len = 0;
             StringBuilder builder = new StringBuilder();
-            byte[] data = new byte[1024];
-
-            do
+            try
             {
-                len = stream.Read(data, 0, 1024);
-                builder.Append(Encoding.UTF8.GetString(data, 0, len));
-            } while (stream.DataAvailable);
+                NetworkStream stream = new NetworkStream(_socket);
+                int len = 0;
+                byte[] data = new byte[1024];
 
-            return Task.FromResult(builder.ToString());
+                do
+                {
+                    len = stream.Read(data, 0, 1024);
+                    builder.Append(Encoding.UTF8.GetString(data, 0, len));
+                } while (stream.DataAvailable);
+                return Task.FromResult(builder.ToString());
+            }
+            catch
+            {
+                //
+                return Task.FromResult(string.Empty);
+            }
         }
 
+        // отключится от сервера
         public void Disconnect()
         {
             if (_socket.Connected)
             {
                 _socket.Shutdown(SocketShutdown.Both);
             }
+
             _socket.Close();
         }
 
+        // отправка сообщения
         public void SendMessage(string message)
         {
             byte[] data = Encoding.UTF8.GetBytes(message);
@@ -128,11 +145,3 @@ namespace Home_Work_2_3_TCP_Client
         }
     }
 }
-
-
-
-
-
-
-
-// ДОПИЛИТЬ ВЫЛЕТЫ

@@ -51,10 +51,9 @@ namespace Home_Work_2_2_TCP_Server
                     {
                         do
                         {
-                            // считываем пакет в data 
+                            // считываем пакет в data
                             len = client.Receive(data); // узнаем размер пакета
                             builder.Append(Encoding.UTF8.GetString(data, 0, len));
-
                         } while (client.Available > 0);
 
                         if (builder.ToString() == "1")
