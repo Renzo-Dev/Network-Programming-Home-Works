@@ -8,18 +8,17 @@ namespace Home_Work_1_TCP_Client
 {
     class Client
     {
-        private IPAddress _ipAddress = null;
         private IPEndPoint _ipEndPoint = null;
 
         public Client()
         {
-            _ipAddress = IPAddress.Parse("127.0.0.1");
-            _ipEndPoint = new IPEndPoint(_ipAddress, 11000);
+      
+            _ipEndPoint = new IPEndPoint(IPAddress.Parse("5.227.27.199"), 7777);
         }
 
         public void Connect()
         {
-            Socket socket = new Socket(_ipAddress.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
+            Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
 
             while (true)
             {

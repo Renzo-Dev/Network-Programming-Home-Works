@@ -8,15 +8,12 @@ namespace Home_Work_1_TCP_Server
     class Server
     {
         // Устанавливаем для Socket локальную конечную точку
-        private IPAddress ipAddress = null;
         private IPEndPoint _localEndPoint = null;
 
         public Server()
         {
-            ipAddress = IPAddress.Parse("127.0.0.1");
-            _localEndPoint = new IPEndPoint(ipAddress, 11000);
+            _localEndPoint = new IPEndPoint(IPAddress.Any, 7777);
         }
-
 
         public void Run()
         {
@@ -24,9 +21,9 @@ namespace Home_Work_1_TCP_Server
             Console.WriteLine("Запуск сервера...");
 
             // Socket сервера, с которым связывается клиент
-            Socket sListener = new Socket(ipAddress.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
+            Socket sListener = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
 
-            // назначаем Socket локальной конечной точки и слушаем входящие Sockets
+            // назначаем Socket локальной конечной точки и 5слушаем входящие Sockets
 
             try
             {
