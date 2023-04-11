@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Net;
 using System.Net.Sockets;
-using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -65,7 +64,6 @@ namespace Home_Work_2_3_TCP_Server
 
         private void StartMessaging(Socket client)
         {
-
             StringBuilder builder = new StringBuilder();
 
             int len = 0;
